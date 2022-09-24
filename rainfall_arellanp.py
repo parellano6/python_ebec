@@ -34,11 +34,11 @@ import datetime
 
 def main():
     years = int(input("Enter the number of years: "))
+    totRain = 0             # total rain
     if years < 1:   # if < 1
         print("Invalid input; years must be greater than 0.")
     else:
         for i in range(1, years + 1):   # goes through each year
-            totRain = 0             # total rain
             print("  For year No. " + str(i))
             j = 1               # iterator variable
             while j < 13:       # goes through each month
