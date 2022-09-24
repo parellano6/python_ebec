@@ -43,7 +43,7 @@ def main():
     totVal = float(popul)
     print("Day   Approx. Pop")
     for i in range(days + 1):
-        print("{:3.0f}".format(i) + "{:14.3f}".format(totVal))
+        print("{:3.0f}".format(i) + "{:14,.3f}".format(totVal))
         totVal += totVal * float(dayPer) * 0.01
 
 
