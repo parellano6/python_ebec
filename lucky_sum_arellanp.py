@@ -35,19 +35,19 @@ Academic Integrity Statement:
 
 
 def main():
-    int1 = input("Enter the first integer: ")
-    int2 = input("Enter the second integer: ")
+    int1 = input("Enter the first integer: ")       # first int value
+    int2 = input("Enter the second integer: ")      # second int value
     
-    tot = lucky_sum(int(int1), int(int2))
+    tot = lucky_sum(int(int1), int(int2))           # lucky sum
     print("The sum of the lucky numbers is " + "{:,.0f}".format(tot) + ".")
 
 
 def lucky_sum(val1, val2):
-    sum = 0
-    if val2 < val1:
-        temp = val1
-        val1 = val2
-        val2 = temp
+    sum = 0             # lucky sum var
+    if val2 < val1:     # checks while input greater
+        temp = val1     # temp
+        val1 = val2     # val1
+        val2 = temp     # val2
     for i in range(val1, val2 + 1):
         if i % 3 != 0:
             sum = sum + i
