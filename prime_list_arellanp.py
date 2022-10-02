@@ -28,7 +28,7 @@ Academic Integrity Statement:
 """
 
 """Import additional modules below this line (starting with unit 6)."""
-import math
+import math    # imports math
 
 """Write new functions below this line (starting with unit 4)."""
 
@@ -37,14 +37,14 @@ def is_prime(num):
         return bool(False)      # if 1 or 0
     
     for i in range(2, int(math.sqrt(num)) + 1):     # check prime loop
-        if (num % i) == 0:      # check prime
-            return bool(False)  # return
-    return bool(True)       # return 
+        if (num % i) == 0:      # check if prime
+            return bool(False)  # return if false
+    return bool(True)       # return if true
 
 def main():
     arr = []        # initial array
-    num = int(input("Enter a positive integer: "))  # user input
-    for i in range(num + 1):    # for loop
+    num = int(input("Enter a positive integer: "))  # user input postive int
+    for i in range(num + 1):    # for loop for user input
         if is_prime(i):         # checks if prime
             arr.append(i)       # append to array
     
