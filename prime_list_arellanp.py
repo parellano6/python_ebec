@@ -1,11 +1,11 @@
 """
 Author: Paloma Arellano, arellanp@purdue.edu
-Assignment: 00.1 - Hello User
-Date: 08/24/2022
+Assignment: 04.5 - Prime List
+Date: 10/01/2022
 
 Description:
-    This program asks the user for their name, and then displays
-    a greeting using their name.
+    This program lists all of the
+    primes from 2 up to a user specified limit. 
 
 Contributors:
     Name, login@purdue.edu [repeat for each]
@@ -28,15 +28,28 @@ Academic Integrity Statement:
 """
 
 """Import additional modules below this line (starting with unit 6)."""
-
+import math
 
 """Write new functions below this line (starting with unit 4)."""
 
+def is_prime(num):
+    if num == 0 or num == 1:        # 1 or 0
+        return bool(False)      # if 1 or 0
+    
+    for i in range(2, int(math.sqrt(num)) + 1):     # check prime loop
+        if (num % i) == 0:      # check prime
+            return bool(False)  # return
+    return bool(True)       # return 
 
 def main():
-    message = input("What is your name? ")
-    print("Hello " + message + "!")
-
+    arr = []        # initial array
+    num = int(input("Enter a positive integer: "))  # user input
+    for i in range(num + 1):    # for loop
+        if is_prime(i):         # checks if prime
+            arr.append(i)       # append to array
+    
+    print("The primes up to " + str(num) + " are: ", end="")    # print
+    print(', '.join(map(str, arr))) # print array
 
 """Do not change anything below this line."""
 if __name__ == "__main__":
