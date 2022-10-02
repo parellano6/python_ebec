@@ -39,7 +39,7 @@ def main():
     for i in range(5):      # iterage through score
         score.append(get_valid_score())     # adds values to score
         grade_calc = determine_grade(score[i])  # calculates grade
-        print("  The letter grade for " + "{:.1f}".format(score[i]) + " is " + grade_calc + ".")
+        print("  The letter grade for " + "{:.1f}".format(score[i]) + " is " + grade_calc + ".")        # print 
     
     avg = calc_average(score)       # average grade calc
     grade = determine_grade(avg)    # letter grade
@@ -52,13 +52,13 @@ def get_valid_score():
     val = 101       # intial val
     while val > 100 or val < 0:     # checks val 
         val = float(input("Enter a score: "))   # asks for input
-        if val > 100 or val < 0:
-            print("  Invalid Input. Please try again.")
+        if val > 100 or val < 0:    # checks ouput
+            print("  Invalid Input. Please try again.")     # prints
     return float(val)
     
 def calc_average(val):
     average = float(mean(val))      # gets average
-    return average
+    return average                  # return
     
 def determine_grade(val):
     if val >= 92:   # A
