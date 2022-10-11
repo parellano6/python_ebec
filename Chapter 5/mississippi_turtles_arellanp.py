@@ -40,7 +40,6 @@ def start():
     setup(600, 400)
     width(9)
     color("purple")
-    #speed(speed=0)
 
 def draw_e():       # draws e
     """Write this function."""
