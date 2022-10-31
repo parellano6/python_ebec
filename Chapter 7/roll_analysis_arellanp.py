@@ -1,11 +1,12 @@
 """
 Author: Paloma Arellano, arellanp@purdue.edu
-Assignment: 00.1 - Hello User
-Date: 08/24/2022
+Assignment: 07.3 - Roll Analysis
+Date: 10/29/2022
 
 Description:
-    This program asks the user for their name, and then displays
-    a greeting using their name.
+    This program returns the probability that the sum of
+    two dice will equal a certain number. This is determined by
+    rolling simulating two dice rolling a million times.
 
 Contributors:
     Name, login@purdue.edu [repeat for each]
@@ -28,14 +29,32 @@ Academic Integrity Statement:
 """
 
 """Import additional modules below this line (starting with unit 6)."""
-
+import random
 
 """Write new functions below this line (starting with unit 4)."""
 
+def roll_d6():
+    return random.randint(1, 6)
+
+def get_2d6_rolls(numRolls):
+    outList = []
+    for i in range(numRolls):
+        num1 = roll_d6()        # first val
+        num2 = roll_d6()        # second val
+        tot = num1 + num2       # add vals
+        outList.append(tot)     # appends vals
+    
+    return outList
+
 
 def main():
-    message = input("What is your name? ")
-    print("Hello " + message + "!")
+    numTimes = 1000000      # num times to run
+    
+    print("Roll  Frequency")
+    listVals = get_2d6_rolls(numTimes)      # gets rand list vals
+    for i in range(2, 13):
+        numIn = listVals.count(i) / numTimes * 100      # gets percentage
+        print('{:3.0f}'.format(i) + "   " + '{:6.2f}'.format(numIn) + "%")
 
 
 """Do not change anything below this line."""
