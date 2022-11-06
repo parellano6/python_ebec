@@ -1,11 +1,11 @@
 """
 Author: Paloma Arellano, arellanp@purdue.edu
-Assignment: 00.1 - Hello User
-Date: 08/24/2022
+Assignment: 08.4 - Number Writer
+Date: 11/05/2022
 
 Description:
-    This program asks the user for their name, and then displays
-    a greeting using their name.
+    This program asks the user how many random numbers it should generate.
+    and then outputs that many random numbers to random_numbers.txt
 
 Contributors:
     Name, login@purdue.edu [repeat for each]
@@ -28,14 +28,20 @@ Academic Integrity Statement:
 """
 
 """Import additional modules below this line (starting with unit 6)."""
-
+import random
 
 """Write new functions below this line (starting with unit 4)."""
 
 
 def main():
-    message = input("What is your name? ")
-    print("Hello " + message + "!")
+    message = input("How many numbers would you like? ")    # number of values asked
+    with open('random_numbers.txt', 'w') as file:           # opens file
+        for i in range(int(message)):                       # range of num
+            randNum = random.randint(1019, 1215)            # random value
+            file.write(format(randNum) + '\n')              # adds to file
+    
+    file.close()    # close file
+
 
 
 """Do not change anything below this line."""

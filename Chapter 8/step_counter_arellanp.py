@@ -1,11 +1,12 @@
 """
 Author: Paloma Arellano, arellanp@purdue.edu
-Assignment: 00.1 - Hello User
-Date: 08/24/2022
+Assignment: 08.6 - Step Counter
+Date: 11/06/2022
 
 Description:
-    This program asks the user for their name, and then displays
-    a greeting using their name.
+    This program uses the steps.txt for the number of steps a person
+    has taken each day for a year. Then it displays the average number of steps
+    each month
 
 Contributors:
     Name, login@purdue.edu [repeat for each]
@@ -28,14 +29,29 @@ Academic Integrity Statement:
 """
 
 """Import additional modules below this line (starting with unit 6)."""
-
+from statistics import mean
+from calendar import monthrange, month_name
 
 """Write new functions below this line (starting with unit 4)."""
 
 
 def main():
-    message = input("What is your name? ")
-    print("Hello " + message + "!")
+    numSteps = []                                           # steps list
+    with open('steps.txt', 'r') as file:                    # opens file
+        for line in file:
+            numSteps.append(line.rstrip())                  # adds value to list
+    numSteps = list(map(int, numSteps))                     # converts list to int vals
+    
+    monthAvg = []           # avg list values
+    nextVal = 0
+    for i in range(1, 13):
+        numDays = monthrange(2019, i)[1]    # number of days in each month
+        monthAvg.append(mean(numSteps[nextVal:(nextVal + numDays)]))    # gets avg
+        nextVal += numDays
+    
+    print("The average steps taken each month were:")
+    for i in range(1, 13):
+        print(" " + '{:>9}'.format(month_name[i]) + " : " + '{:.2f}'.format(monthAvg[i - 1]))
 
 
 """Do not change anything below this line."""

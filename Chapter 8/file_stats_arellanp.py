@@ -1,11 +1,11 @@
 """
 Author: Paloma Arellano, arellanp@purdue.edu
-Assignment: 00.1 - Hello User
-Date: 08/24/2022
+Assignment: 08.3 - File Stats
+Date: 11/05/2022
 
 Description:
-    This program asks the user for their name, and then displays
-    a greeting using their name.
+    This program reads the contents of a file and finds how many words,
+    lines, and average number of words per line in it.
 
 Contributors:
     Name, login@purdue.edu [repeat for each]
@@ -34,8 +34,19 @@ Academic Integrity Statement:
 
 
 def main():
-    message = input("What is your name? ")
-    print("Hello " + message + "!")
+    file = open('frontiero_v_richardson.txt', 'r')      # opens file first time
+    
+    numWords = len((file.read()).split())               # num words
+    file.close()    # close file
+    file = open('frontiero_v_richardson.txt', 'r')      # opens file second time
+    numLines = len(file.readlines())                    # num lines
+    avgWpL = numWords / numLines                        # avg words per line
+    
+    print("Total number of words: " + format(numWords))
+    print("Total number of lines: " + format(numLines))
+    print("Average number of words per line: " + '{:.1f}'.format(avgWpL))
+    
+    file.close()    # close file
 
 
 """Do not change anything below this line."""
