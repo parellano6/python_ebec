@@ -5,7 +5,7 @@ Date: 11/19/2022
 
 Description:
     This program asks the user for monthly sales data and then plots
-    the slaes as a pie chart.
+    the sales as a pie chart.
 
 Contributors:
     Name, login@purdue.edu [repeat for each]

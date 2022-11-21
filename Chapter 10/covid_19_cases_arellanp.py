@@ -1,6 +1,6 @@
 """
 Author: Paloma Arellano, arellanp@purdue.edu
-Assignment: 10.3 - COVID-19 Cases
+Assignment: 10.3 - COVID 19 Cases
 Date: 11/20/2022
 
 Description:
@@ -30,21 +30,38 @@ Academic Integrity Statement:
 
 """Import additional modules below this line (starting with unit 6)."""
 import matplotlib.pyplot as plt
+import datetime
+import numpy as np
 
 """Write new functions below this line (starting with unit 4)."""
 
 
 def main():
     data = []
+    dateVals = []
     val = 0
     with open('indiana_covid-19_data_fall_2022.txt', 'r') as file:           # opens file
         for line in file:
             count = 0
-            for word in line.split():
-                print(word)
-#                val += float(line.strip())
-#                print(val)
-#                data.append(val)        # adds value to data list
+            for word in line.split():   # gets each value
+                if count == 2:
+                    val += (float(word.strip()) / 1000) # gets each cases val
+                    data.append(val)        # adds value to data list
+                if count == 0:
+                    y, m, d = (word.strip()).split('-')
+                    dt = datetime.date(int(y), int(m), int(d))
+                    dateVals.append(dt)     # adds date to list
+                count += 1
+        
+    fig, ax = plt.subplots()                            # creates figure
+    plt.bar(dateVals, height=data, width=7)                                    # plots data
+    ax.set_xlim(datetime.date(2020, 1, 1), datetime.date(2022, 11, 1))      # sets x axis limits
+    ax.set_title('Weekly Positive COVID-19 Cases in Indiana')              # title
+    ax.set_xlabel('Date')                  # x axis title
+    ax.set_ylabel('Number of Cases (in thousands)')     # y axis title
+    fig.autofmt_xdate()     # formats date
+    plt.yticks(np.arange(0, 2251, 250))
+    plt.show()                                          # shows plot
 
 
 """Do not change anything below this line."""
